@@ -18,7 +18,7 @@ Welcome to the **GROQ AI Chatbot**! This application allows you to interact with
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/groq-ai-chatbot.git
+   git clone https://github.com/fotinov/groq-ai-chatbot.git
    ```
 
 2. **Navigate to the project directory**:
