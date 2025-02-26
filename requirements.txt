@@ -1,0 +1,6 @@
+PyQt6
+pyttsx3
+fpdf
+textblob
+pygments
+groq
