@@ -18,12 +18,12 @@ Welcome to the **GROQ AI Chatbot**! This application allows you to interact with
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/groq-ai-chatbot.git
+   git clone https://github.com/fotinov/Groq-AI-Chat.git
    ```
 
 2. **Navigate to the project directory**:
    ```bash
-   cd groq-ai-chatbot
+   cd Groq-AI-Chat
    ```
 
 3. **Obtain your API Key**:
@@ -32,7 +32,7 @@ Welcome to the **GROQ AI Chatbot**! This application allows you to interact with
    - Generate a new API key and copy it.
 
 4. **Set your API Key**:
-   - Open the `chat/groq_ai.py` file in a text editor.
+   - Open the `Groq-AI-Chat/groq_ai.py` file in a text editor.
    - Locate the line where the Groq API client is initialized:
      ```python
      client = groq.Groq(api_key="YOUR_KEY_HERE")  # Replace with your actual API key
