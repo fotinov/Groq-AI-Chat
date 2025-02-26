@@ -21,12 +21,14 @@ from pygments.lexers import guess_lexer, PythonLexer
 from pygments.formatters import HtmlFormatter
 
 client = groq.Groq(
-    api_key="YOUR_KEY_HERE") # Replace with your actual API key
+    api_key="YOUR_KEY_HERE")  # Replace with your actual API key
+
 
 class WorkerSignals(QObject):
     finished = pyqtSignal()
     error = pyqtSignal(Exception)
     result = pyqtSignal(str)
+
 
 class Worker(QRunnable):
     def __init__(self, fn, *args, **kwargs):
@@ -148,7 +150,8 @@ class AIChatApp(QWidget):
         self.settings_menu.addAction(self.create_action("📝 Export Chat to PDF", self.export_chat_to_pdf))
         self.settings_menu.addAction(self.create_action("📝 Export Chat to Markdown", self.export_chat_to_markdown))
         self.settings_menu.addAction(self.create_action("🔍 Analyze Last AI Sentiment", self.show_last_ai_sentiment))
-        self.settings_menu.addAction(self.create_action("🗣️ Speech-to-Text (coming soon)", self.speech_to_text_placeholder))
+        self.settings_menu.addAction(
+            self.create_action("🗣️ Speech-to-Text (coming soon)", self.speech_to_text_placeholder))
         self.settings_menu.addAction(self.create_action("🧹 Clear Chat", self.clear_chat))
         self.settings_menu.addAction(self.create_action("🖋 Change AI Reply Formatting", self.change_ai_reply_font))
         self.settings_menu.addAction(self.create_action("💾 Save Snippet", self.save_snippet))
@@ -245,7 +248,6 @@ class AIChatApp(QWidget):
         return formatted
 
     def format_code_snippet(self, code_text: str, code_id: int) -> str:
-
         header = f"<div style='font-weight: bold; color: #FFD700;'>Snippet {code_id}</div>"
         try:
             lexer = guess_lexer(code_text)
@@ -255,7 +257,7 @@ class AIChatApp(QWidget):
         highlighted = highlight(code_text, lexer, formatter)
         snippet_div = (
             f"<div style='background-color: black; padding: 10px; border-radius: 5px; "
-            f"white-space: pre-wrap; overflow:auto;'>{highlighted}</div>"
+            f"white-space: pre-wrap; overflow:auto;'>```{highlighted}```</div>"
         )
         return header + snippet_div
 
@@ -266,6 +268,7 @@ class AIChatApp(QWidget):
             self.next_code_id += 1
             self.code_snippets[code_id] = code_content
             return self.format_code_snippet(code_content, code_id)
+
         pattern = re.compile(r"```(?:[a-zA-Z]+)?\n(.*?)```", re.DOTALL)
         new_text = pattern.sub(repl_manual, text)
         if new_text == text:
@@ -384,7 +387,7 @@ class AIChatApp(QWidget):
         snippet_ids = sorted(self.code_snippets.keys())
         snippet_labels = [f"Snippet {i}" for i in snippet_ids]
 
-        snippet_choice, ok = QInputDialog.getItem(self, "Save Snippet", "Select snippet to save:", snippet_labels, 0, False)
+        snippet_choice, ok = QInputDialog.getItem(self, "Save Snippet", "Select snippet to save:", snippet_labels, 0,False)
         if not ok or not snippet_choice:
             return
 
