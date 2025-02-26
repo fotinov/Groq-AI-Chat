@@ -55,12 +55,12 @@ class AIChatApp(QWidget):
         self.setWindowTitle("GROQ AI Chatbot")
         self.setGeometry(200, 200, 800, 600)
 
-        self.bg_color = "#1e1e1e"
+        self.bg_color = "#1e2419"
         self.separator_color = "#888888"
 
-        self.user_label_color = "#4CAF50"
+        self.user_label_color = "#007BFF"
         self.user_chat_color = "#FFFFFF"
-        self.ai_label_color = "#2196F3"
+        self.ai_label_color = "#FF0000"
         self.ai_chat_color = "#FFFFFF"
 
         self.ai_model = "llama3-8b-8192"
@@ -387,7 +387,7 @@ class AIChatApp(QWidget):
         snippet_ids = sorted(self.code_snippets.keys())
         snippet_labels = [f"Snippet {i}" for i in snippet_ids]
 
-        snippet_choice, ok = QInputDialog.getItem(self, "Save Snippet", "Select snippet to save:", snippet_labels, 0,False)
+        snippet_choice, ok = QInputDialog.getItem(self, "Save Snippet", "Select snippet to save:", snippet_labels, 0, False)
         if not ok or not snippet_choice:
             return
 
